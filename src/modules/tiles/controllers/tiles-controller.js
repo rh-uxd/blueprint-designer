@@ -1,8 +1,8 @@
-angular.module( 'sampleApp.dashboardModule' )
-    .controller( 'dashboardController',
+angular.module( 'selfServiceApp.tilesModule' )
+    .controller( 'tilesController',
     ['$scope',
      '$translate',
-     function( $scope, $translate, panelValidation ) {
+     function( $scope, $translate) {
         'use strict';
 
 

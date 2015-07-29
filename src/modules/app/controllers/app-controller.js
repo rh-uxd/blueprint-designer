@@ -1,5 +1,5 @@
-angular.module( 'sampleApp.appModule' )
-    .controller( 'sampleApp.appController',
+angular.module( 'selfServiceApp.appModule' )
+    .controller( 'appController',
     ['$scope',
      '$rootScope',
      function( $scope,
@@ -11,19 +11,34 @@ angular.module( 'sampleApp.appModule' )
 
          vm.username = "Jeremey Smith";
 
-         vm.navigationItems = [
-				{
-					"title": "Calendar",
-					"href": "#/calendar"
-				},
-				{
-					"title": "Messages",
-					"href": "#/messages"
-				},
-				{
-					"title": "Analytics",
-					"href": "#/analytics"
-				}
-			];
+         vm.isCollapsed = false;
+         vm.showMobileNav = false;
+         vm.isMobileNav = false;
+
+         vm.items = [
+        	{
+            	"title": "Dashboard",
+            	"href": "#/dashboard",
+            	"icon": "fa fa-dashboard"
+        	},
+        	{
+            	"title": "My Services",
+            	"href": "#/dashboard",
+            	"icon": "fa fa-file-o",
+            	"count": "12"
+        	},
+        	{
+            	"title": "My Requests",
+            	"href": "#/dashboard",
+            	"icon": "fa fa-file-text-o",
+            	"count": "2"
+        	},
+        	{
+            	"title": "Service Catalog",
+            	"href": "#/dashboard",
+            	"icon": "fa fa-copy",
+            	"active": true
+        	}
+    	];
 
      }] );

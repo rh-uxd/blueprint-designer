@@ -4,6 +4,9 @@ module.exports = function( grunt ) {
     // Load grunt tasks automatically
     require( 'load-grunt-tasks' )( grunt );
 
+    // Configuration
+    var port = grunt.option('port') || 8090
+
     // Define the configuration for all the tasks
     grunt.initConfig( {
         // Project settings
@@ -30,38 +33,22 @@ module.exports = function( grunt ) {
         // Live Reload is to slow need to figure out how to stop reloading of npm modules
         watch:    {
             js:         {
-                files:   ['<%= projectSettings.src %>/**/*.js'],
-                //tasks: ['jshint:all'],
-                options: {
-                    livereload: true
-                }
+                files:   ['<%= projectSettings.src %>/**/*.js']
             },
             css:        {
-                files:   ['<%= projectSettings.src %>/**/*.css'],
-                options: {
-                    livereload: true
-                }
+                files:   ['<%= projectSettings.src %>/**/*.css']
             },
             less: {
                 files: 'src/**/*.less',
-                tasks: ['less'],
-                options: {
-                    livereload: false
-                }
+                tasks: ['less']
             },
             html:       {
-                files:   ['<%= projectSettings.src %>/**/*.html'],
-                options: {
-                    livereload: true
-                }
+                files:   ['<%= projectSettings.src %>/**/*.html']
             },
             json:       {
                 files:   ['<%= projectSettings.mockData %>/**/*.json',
                           '<%= projectSettings.src %>/**/*.json'
-                ],
-                options: {
-                    livereload: true
-                }
+                ]
             },
             jsTest:     {
                 files: ['<%= projectSettings.unitTest %>/{,*/}*-test.js'],
@@ -69,64 +56,38 @@ module.exports = function( grunt ) {
             },
             gruntfile:  {
                 files: ['Gruntfile.js']
-            },
-            livereload: {
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                },
-                files:   [
-                    '<%= projectSettings.src %>**/*',
-                    '.tmp/libraries/{,*/}*.css',
-                    '.tmp/styles/{,*/}*.css',
-                    '<%= projectSettings.mockData %>**/*'
-                ]
             }
         },
 
-        // The actual grunt server settings
         connect:  {
-            options:    {
-                port:       8090,
-                hostname:   'localhost', // 0.0.0.0 allows access from outside
-                livereload: 35729
-            },
-            livereload: {
-                options: {
-                    open:       true,
+            server: {
+                options:    {
+                    port:       port,
+                    hostname: '*',
                     base:       [
                         '.tmp',
                         '<%= projectSettings.src %>',
                         '<%= projectSettings.mockData %>'
                     ],
-                    middleware: function( connect, options ) {
-                        var middlewares = [];
-
-                        if( !Array.isArray( options.base ) ) {
+                    middleware: function (connect, options) {
+                        if (!Array.isArray(options.base)) {
                             options.base = [options.base];
                         }
 
+                        // Setup the proxy
+                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
                         // Serve static files
-                        options.base.forEach( function( base ) {
-                            middlewares.push( connect.static( base ) );
-                        } );
+                        options.base.forEach(function (base) {
+                            middlewares.push(connect.static(base));
+                        });
+
+                        // Make directory browse-able
+                        var directory = options.directory || options.base[options.base.length - 1];
+                        middlewares.push(connect.directory(directory));
 
                         return middlewares;
                     }
-                }
-            },
-            test:       {
-                options: {
-                    port: 9001,
-                    base: [
-                        '.tmp',
-                        '<%= projectSettings.src %>',
-                        '<%= projectSettings.mockData %>'
-                    ]
-                }
-            },
-            deploy:     {
-                options: {
-                    base: '<%= projectSettings.dist %>'
                 }
             }
         },
@@ -355,7 +316,7 @@ module.exports = function( grunt ) {
         grunt.task.run( [
             'clean:server',
             'configureProxies:server', // added just before connect
-            'connect:livereload',
+            'connect',
             'watch'
         ] );
     } );

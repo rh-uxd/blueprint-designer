@@ -1,5 +1,5 @@
 {
-    "sampleApp": {
+    "selfServiceApp": {
         "header": {
             "TITLE": "шдьdeößüSelectors"
         }

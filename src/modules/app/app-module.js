@@ -1,22 +1,23 @@
-angular.module( 'sampleApp.appModule', [
+angular.module( 'selfServiceApp.appModule', [
     'ngResource',
     'ngRoute',
+    'ui.bootstrap',
     'pascalprecht.translate',
-    'sampleApp.dashboardModule',
+    'selfServiceApp.tilesModule',
 ] )
     .config( ['$routeProvider', '$translateProvider',
               function( $routeProvider, $translateProvider ) {
                   'use strict';
 
                   $routeProvider
-                    .when('/dashboard', {
-                    templateUrl: 'modules/dashboard/views/dashboard.html',
-                    controller: 'dashboardController',
+                    .when('/tiles', {
+                    templateUrl: 'modules/tiles/views/tiles-view.html',
+                    controller: 'tilesController',
                     controllerAs: 'vm'
                   })
                   // Default
                   .otherwise({
-                    redirectTo: '/dashboard'
+                    redirectTo: '/tiles'
                   });
 
                   $translateProvider.translations( 'default', 'en');

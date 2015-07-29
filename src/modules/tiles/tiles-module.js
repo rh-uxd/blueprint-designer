@@ -1,4 +1,4 @@
 
-angular.module( 'sampleApp.dashboardModule',
+angular.module( 'selfServiceApp.tilesModule',
     ['pascalprecht.translate',
      'ui.bootstrap'] );

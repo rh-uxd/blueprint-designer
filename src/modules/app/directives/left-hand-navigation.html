@@ -1,0 +1,14 @@
+<div class="navigation pf-navigation" ng-class="{collapsed: isCollapsed, hidden: isMobileNav, peek: showMobileNav}">
+	<a class="action-collapse fa fa-angle-double-left" ng-class="{'fa-angle-double-right': isCollapsed}" ng-click="isCollapsed = !isCollapsed"></a>
+
+	<div class="pf-navigation-primary">
+		<aside class="list-group">
+			<a ng-click="navigate()" href="{{ item.href }}" class="list-group-item" ng-repeat="item in items" ng-class="{'isActive': item.active}">
+				<i class="{{ item.icon }}"></i>
+				<span class="list-group-item-value">{{ item.title }}</span>
+				<span ng-if="item.count" class="count">{{ item.count }}</span>
+			</a>
+		</aside>
+	</div>
+
+</div>

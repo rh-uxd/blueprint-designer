@@ -3,7 +3,7 @@
 describe('Controller: appController', function () {
 
   // load the controller's module
-  beforeEach(module('sampleApp.appModule'));
+  beforeEach(module('selfServiceApp.appModule'));
 
   var appController,
     vm;
