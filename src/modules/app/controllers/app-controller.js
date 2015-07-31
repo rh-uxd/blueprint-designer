@@ -52,15 +52,27 @@ angular.module( 'selfServiceApp.appModule' )
             ]
          };
 
-        //Navigation state variables
+        //Navigation state variables - used for responsiveness
         vm.isCollapsed = false;
-        vm.showMobileNav = false;
         vm.isMobileNav = false;
-        vm.shouldCollapse = false;
 
+        //Navigation state variables - Used to peak mobile nav from hamburger menu in mobile state
+        vm.showMobileNav = false;
+
+        //Navigation state variables - Set this to true if you want the nav to collapse on page load
+        vm.forceNavCollapse = false;
+
+        vm.navigate = function(item) {
+          //Hide the mobile nav  
+          vm.showMobileNav = false;
+
+          //ToDo - Set nav active state
+          //Need to properly get back item
+        }
+
+        //Hooked up to hamburger icon to show the mobile navigation
         vm.toggleNavigation = function() {
           vm.showMobileNav = !vm.showMobileNav;
-          console.log(vm.showMobileNav);
         }
 
 

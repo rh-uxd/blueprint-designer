@@ -78,7 +78,7 @@
     </header> <!--/.navbar-->
     </div>
 
-    <div navigation items="vm.items" should-collapse="vm.shouldCollapse" is-collapsed="vm.isCollapsed" is-mobile-nav="vm.isMobileNav" show-mobile-nav="vm.showMobileNav"></div>
+    <div navigation items="vm.items" force-nav-collapse="vm.forceNavCollapse" is-collapsed="vm.isCollapsed" is-mobile-nav="vm.isMobileNav" show-mobile-nav="vm.showMobileNav" navigate="vm.navigate(item)"></div>
 
     <div class="container-fluid pf-fixed-top-container pf-fixed-left-nav" ng-class="{'pf-collapsed-left-nav': vm.isCollapsed, 'pf-hide-left-nav': vm.isMobileNav }">
       <div class="pf-fixed-top-container-inner">

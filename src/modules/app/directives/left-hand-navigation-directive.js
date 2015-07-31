@@ -10,6 +10,7 @@
 			scope: {
 				items: '=',
 				isCollapsed: '=',
+				forceNavCollapse: '=',
 				showMobileNav: '=',
 				isMobileNav: '=',
 				navigate: '&'
@@ -44,7 +45,7 @@
 					$scope.showMobileNav = false;
 
 					// Force collapsed nav state based on developer state
-					if ( $scope.collapseNav  ) {
+					if ( $scope.forceNavCollapse ) {
 						$scope.isCollapsed = true;
 					} else {
 						$scope.isCollapsed = (width < breakpoints.desktop);
