@@ -12,42 +12,42 @@ angular.module( 'selfServiceApp.tilesModule' )
         vm.tiles = [
         	{ 
         		'title': 'Apache',
-        		'subtitle': '$4.00 / Month',
+        		'more': 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows NT',
         		'img': 'apache.jpg'
         	},
         	{ 
         		'title': 'JBoss Data Grid',
-        		'subtitle': '$2.00 / Month',
+        		'more': 'Data grids are in-memory distributed databases designed for scalability and fast access to large volumes of data. More than just a distributed caching solution, data grids also offer additional functionality such as map/reduce, querying, processing for streaming data, and transaction capabilities.',
         		'img': 'jboss.jpg'
         	},
         	{ 
         		'title': 'JBoss EAP',
-        		'subtitle': '$2.00 / Month',
+        		'more': 'JBoss® Enterprise Application Platform 6 provides an innovative modular, cloud-ready architecture, powerful management and automation, and world class developer productivity.',
         		'img': 'jboss.jpg'
         	},
         	{ 
         		'title': 'JBoss Portal',
-        		'subtitle': '$2.00 / Month',
+        		'more': 'JBoss Portal provides an open source platform for hosting and serving a portals Web interface, publishing and managing its content, and customizing its experience.',
         		'img': 'jboss.jpg'
         	},
         	{ 
         		'title': 'JBoss Web Server',
-        		'subtitle': '$4.00 / Month',
+        		'more': 'Red Hat® JBoss® Web Server is a fully-integrated and certified set of components for hosting of Java™ web applications. It combines the world’s most deployed web server (Apache™ HTTP Server), the top servlet engine (Apache™ Tomcat), load balancers (mod_jk and mod_cluster), and the Tomcat Native library, with the best support in middleware.',
         		'img': 'jboss.jpg'
         	},
         	{ 
         		'title': 'MongoDB',
-        		'subtitle': '$6.50 / Month',
+        		'more': 'MongoDB is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas, making the integration of data in certain types of applications easier and faster.',
         		'img': 'mongo.jpg'
         	},
         	{ 
         		'title': 'MySql',
-        		'subtitle': '$4.00 / Month',
+        		'more': 'The worlds most popular open source database',
         		'img': 'mysql.jpg'
         	},
         	{ 
         		'title': 'Wordpress',
-        		'subtitle': '$8.00 / Month',
+        		'more': 'WordPress.com is the best place for your personal blog or business site.',
         		'img': 'wordpress.jpg'
         	}
         ];
