@@ -4,18 +4,20 @@
     <div class="pf-navigation-primary">
       <aside class="list-group">
         <a ng-click="navigate(item)" href="{{ item.href }}" class="list-group-item" ng-repeat="item in items.primary" ng-class="{'isActive': item.active}">
-          <i class="{{ item.icon }}" title="{{ item.title }}"></i>
+          <i class="{{ item.icon }}"></i>
           <span class="list-group-item-value">{{ item.title }}</span>
           <span ng-if="item.count" class="count">{{ item.count }}</span>
         </a>
 
         <div ng-if="showMobileNav" class="list-group-item-secondary">
         <a ng-click="navigate(item)" href="{{ item.href }}" class="list-group-item" ng-repeat="item in items.secondary" ng-class="{'isActive': item.active}">
-          <i class="{{ item.icon }}" title="{{ item.title }}"></i>
+          <i class="{{ item.icon }}"></i>
           <span class="list-group-item-value">{{ item.title }}</span>
           <span ng-if="item.count" class="count">{{ item.count }}</span>
         </a>
         </div>
+
+
       </aside>
     </div>
   </div>
