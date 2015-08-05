@@ -15,7 +15,7 @@
   <body ng-controller="appController as vm" class="height-100">
     <!-- Fixed navbar -->
     <div class="container-fluid">
-    <header class="navbar navbar-fixed-top pf-navbar-header" role="navigation">
+    <header class="navbar navbar-fixed-top navbar-header-pf" role="navigation">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavigation();">
               <span class="sr-only">Toggle navigation</span>
@@ -75,19 +75,19 @@
 
     <div navigation items="vm.items" force-nav-collapse="vm.forceNavCollapse" is-collapsed="vm.isCollapsed" is-mobile-nav="vm.isMobileNav" show-mobile-nav="vm.showMobileNav" navigate="vm.navigate(item)"></div>
 
-    <div class="container-fluid pf-fixed-top-container pf-fixed-left-nav" ng-class="{'pf-collapsed-left-nav': vm.isCollapsed, 'pf-hide-left-nav': vm.isMobileNav }">
-      <div class="pf-fixed-top-container-inner">
+    <div class="container-fluid fixed-container-pf pf-fixed-left-nav" ng-class="{'fixed-collapsed-left-nav-pf': vm.isCollapsed, 'fixed-hide-left-nav-pf': vm.isMobileNav }">
+      <div class="fixed-container-inner-pf">
         <div ng-view></div>
       </div>
     </div>
 
-    <footer class="pf-fixed-footer">
+    <footer class="fixed-footer-pf">
       <p class="text-muted">&copy; 2015 Red Hat, Inc.</p>
     </footer>
 
 
 
-            <script src="js/cfbe006a.libraries.js"></script>
+            <script src="js/b4a43a57.libraries.js"></script>
             <script src="js/968ee5d4.app.js"></script>
           </body>
         </html>
