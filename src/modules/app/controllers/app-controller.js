@@ -38,12 +38,30 @@ angular.module( 'selfServiceApp.appModule' )
     	    ],
             "secondary": [
               {
-                "title": "Help",
-                "icon": "fa fa-question-circle"
+                "title": "Launch",
+                "icon": "fa pf-icon pficon-export fa-rotate-270"
               },
               {
-                "title": "About Me",
-                "icon": "fa fa-user"
+                "title": "Notifications",
+                "icon": "fa pficon-flag",
+                "count": "2",
+                "class": "notifications"
+              },
+              {
+                "title": "Help",
+                "icon": "fa pficon-help"
+              },
+              {
+                "title": "About",
+                "icon": "fa fa-info-circle"
+              },
+              {
+                "title": "Preferences",
+                "icon": "fa pficon-user"
+              },
+              {
+                "title": "Log Out",
+                "icon": "fa fa-sign-out"
               },
               {
                 "title": "Search",
@@ -72,7 +90,12 @@ angular.module( 'selfServiceApp.appModule' )
 
         //Hooked up to hamburger icon to show the mobile navigation
         vm.toggleNavigation = function() {
-          vm.showMobileNav = !vm.showMobileNav;
+          if (!vm.isMobileNav) {
+            vm.isCollapsed = !vm.isCollapsed; 
+            vm.forceNavCollapse = true;
+          } else {
+            vm.showMobileNav = !vm.showMobileNav;
+          }
         }
 
 

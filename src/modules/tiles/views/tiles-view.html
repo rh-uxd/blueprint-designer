@@ -1,18 +1,7 @@
 <div class="tiles-view">
-	<div class="tile" ng-repeat="tile in vm.tiles">
-		<div class="tile-flip">
-		  <div class="front">
-		    <h3 class="title">{{ tile.title }}</h3>
-		    <img class="logo" alt="{{ tile.title }}" src="styles/images/{{ tile.img }}"/>
-		    <button class="btn btn-primary btn-order" type="button">Order</button>
-		  </div>
-		  <div class="back">
-		  	<h3 class="title">{{ tile.title }}</h3>
-		  	<p class="about">
-	          {{ tile.more }}
-	        </p>
-	        <button class="btn btn-primary btn-order" type="button">Order</button>
-		  </div>
-		</div>
-	</div>
+  <div class="tile" ng-repeat="tile in vm.tiles">
+    <h3 class="title">{{ tile.title }}</h3>
+    <img class="logo" alt="{{ tile.title }}" src="styles/images/{{ tile.img }}"/>
+    <a class="more" popover-placement="right" popover="{{ tile.more }}" popover-trigger="mouseenter"><i class="fa fa-info-circle"></i></a>
+  </div>
 </div>
