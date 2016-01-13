@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="selfServiceApp.appModule" class="height-100">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Self Service UI</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="shortcut icon" href="favicon.ico?v=1"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="styles/css/libraries.css"/>
+    <link rel="stylesheet" href="styles/css/app.css"/>
+  </head>
+  <body ng-controller="appController as vm" class="height-100 container-pf-scroll-body">
+    <!-- Fixed navbar -->
+     <header class="navbar navbar-pf-header" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="vm.toggleNavigation();">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand"><img class="navbar-brand-name" src="styles/images/brand.svg" alt="PatternFly Enterprise Application" /></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <nav class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="http://manageiq.org/" target="_blank" class="action"><i title="Open" class="pf-icon pficon-export fa-rotate-270"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li dropdown>
+                <a dropdown-toggle class="action">
+                  <i title="Notifications" class="fa pficon-flag"></i>
+                  <span class="notification-icon-count">{{ vm.notifications.length }}</span>
+                </a>
+                <div class="dropdown-menu infotip bottom-right">
+                  <div class="arrow"></div>
+                    <ul class="list-group">
+                      <li class="list-group-item" ng-repeat="notification in vm.notifications">
+                        <span class="i pficon pficon-info"></span> {{ notification.text }}
+                      </li>
+                    </ul>
+                    <div class="footer">
+                      <a ng-click="vm.clearNotifications()" ng-if="vm.notifications.length > 0">Clear Messages</a>
+                      <span ng-if="vm.notifications.length === 0">No Messages</span>
+                    </div>
+                 </div>
+              </li>
+              <li dropdown>
+                <a dropdown-toggle class="action">
+                  <i title="Help" class="fa pficon-help"></i>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">About</a></li>
+                </ul>
+              </li>
+              <li dropdown>
+                <a dropdown-toggle class="action"> 
+                  <i title="Username" class="fa pficon-user"></i>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="action"><a href="#">Preferences</a></li>
+                  <li class="action"><a href="#">Logout</a></li>
+                </ul>
+              </li>
+              <li><a class="action"><i title="Search" class="fa fa-search"></i></a></li>
+            </ul>
+          </nav><!-- /.navbar-collapse -->
+    </header> <!--/.navbar-->
+
+    <div class="container-pf-sticky-footer height-100">
+      <div navigation items="vm.items" force-nav-collapse="vm.forceNavCollapse" is-collapsed="vm.isCollapsed" is-mobile-nav="vm.isMobileNav" show-mobile-nav="vm.showMobileNav" navigate="vm.navigate(item)"></div>
+
+      <div class="container-fluid container-pf-scroll container-pf-nav-pf-vertical-alt" ng-class="{'collapsed-nav': vm.isCollapsed, 'hidden-nav': vm.isMobileNav }">
+        <div ng-view></div>
+      </div>
+    </div>
+
+    <footer class="footer-pf-alt">
+      <p>&copy; 2015 Red Hat, Inc.</p>
+    </footer>
+
+
+            <script src="js/d5087f60.libraries.js"></script>
+            <script src="js/1bae5f75.app.js"></script>
+          </body>
+        </html>

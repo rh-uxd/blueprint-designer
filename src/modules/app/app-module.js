@@ -17,7 +17,7 @@ angular.module( 'selfServiceApp.appModule', [
                   })
                   // Default
                   .otherwise({
-                    redirectTo: '/tiles'
+                    redirectTo: '/'
                   });
 
                   $translateProvider.translations( 'default', 'en');

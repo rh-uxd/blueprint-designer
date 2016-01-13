@@ -1,8 +1,8 @@
 <!doctype html>
-<html ng-app="selfServiceApp.appModule" class="height-100">
+<html ng-app="selfServiceApp.appModule" class="layout-pf-alt layout-pf-alt-fixed layout-pf-alt-fixed-inner-scroll height-100">
   <head>
     <meta charset="utf-8"/>
-    <title>Self Service UI</title>
+    <title>Blueprint Designer</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
@@ -17,99 +17,116 @@
     <link rel="stylesheet" href="styles/app.css"/>
     <!-- endbuild -->
   </head>
-  <body ng-controller="appController as vm" class="height-100 container-pf-scroll-body">
-    <!-- Fixed navbar -->
-    <header class="navbar navbar-pf-header" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-click="vm.toggleNavigation();">
+  <body ng-controller="appController as vm">
+  <nav class="navbar navbar-pf-header navbar-pf-alt">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand"><img class="navbar-brand-name" src="styles/images/brand.svg" alt="PatternFly Enterprise Application" /></a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <nav class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="http://manageiq.org/" target="_blank" class="action"><i title="Open" class="pf-icon pficon-export fa-rotate-270"></i></a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li dropdown>
-                <a dropdown-toggle class="action">
-                  <i title="Notifications" class="fa pficon-flag"></i>
-                  <span class="notification-icon-count">{{ vm.notifications.length }}</span>
-                </a>
-                <div class="dropdown-menu infotip bottom-right">
-                  <div class="arrow"></div>
-                    <ul class="list-group">
-                      <li class="list-group-item" ng-repeat="notification in vm.notifications">
-                        <span class="i pficon pficon-info"></span> {{ notification.text }}
-                      </li>
-                    </ul>
-                    <div class="footer">
-                      <a ng-click="vm.clearNotifications()" ng-if="vm.notifications.length > 0">Clear Messages</a>
-                      <span ng-if="vm.notifications.length === 0">No Messages</span>
-                    </div>
-                 </div>
-              </li>
-              <li dropdown>
-                <a dropdown-toggle class="action">
-                  <i title="Help" class="fa pficon-help"></i>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">About</a></li>
-                </ul>
-              </li>
-              <li dropdown>
-                <a dropdown-toggle class="action"> 
-                  <i title="Username" class="fa pficon-user"></i>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="action"><a href="#">Preferences</a></li>
-                  <li class="action"><a href="#">Logout</a></li>
-                </ul>
-              </li>
-              <li><a class="action"><i title="Search" class="fa fa-search"></i></a></li>
-            </ul>
-          </nav><!-- /.navbar-collapse -->
-    </header> <!--/.navbar-->
-
-    <div class="container-pf-sticky-footer height-100">
-      <div navigation items="vm.items" force-nav-collapse="vm.forceNavCollapse" is-collapsed="vm.isCollapsed" is-mobile-nav="vm.isMobileNav" show-mobile-nav="vm.showMobileNav" navigate="vm.navigate(item)"></div>
-
-      <div class="container-fluid container-pf-scroll container-pf-nav-pf-vertical-alt" ng-class="{'collapsed-nav': vm.isCollapsed, 'hidden-nav': vm.isMobileNav }">
-        <div ng-view></div>
+          </button>
+          <a href="/" class="navbar-brand">
+              <span class="fa fa-sitemap"></span> Service Blueprint Designer
+          </a>
       </div>
-    </div>
+      <nav class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li><a href="#" target="_blank" class="nav-item-iconic nav-item-iconic-new-window"><span title="Launch" class="fa fa-external-link"></span></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right navbar-iconic">
+              <li class="dropdown">
+                  <a class="dropdown-toggle nav-item-iconic" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <span title="Notifications" class="fa pficon-flag"></span>
+                      <span class="badge">2</span>
+                  </a>
+                  <div class="dropdown-menu infotip bottom-right">
+                      <div class="arrow"></div>
+                      <ul class="list-group">
+                          <li class="list-group-item">
+                              <span class="i pficon pficon-info"></span> Modified Datasources ExampleDS
+                          </li>
+                          <li class="list-group-item">
+                              <span class="i pficon pficon-info"></span> Error: System Failure
+                          </li>
+                      </ul>
+                      <div class="footer">
+                          <a>Clear Messages</a>
+                      </div>
+                  </div>
+              </li>
+              <li class="dropdown">
+                  <a class="dropdown-toggle nav-item-iconic" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <span title="Help" class="fa pficon-help"></span>
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">About</a></li>
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a class="dropdown-toggle nav-item-iconic" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <span title="Username" class="fa pficon-user"></span>
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <li><a href="#">dtaylor</a></li>
+                      <li><a href="#">Logout</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </nav>
 
-    <footer class="footer-pf-alt">
-      <p>&copy; 2015 Red Hat, Inc.</p>
-    </footer>
+  </nav> <!--/.navbar-->
 
+  <nav class="nav-pf-vertical-alt">
+    <ul class="list-group">
+          <li class="list-group-item">
+              <a href="#">
+                  <span class="fa fa-files-o" title="My Services" data-toggle="tooltip" data-placement="right"></span>
+                  <span class="list-group-item-value">Blueprints</span>
+                  <span class="badge">6</span>
+              </a>
+          </li>
+          <li class="list-group-item">
+              <a href="#">
+                  <span class="fa fa-comments" title="My Requests" data-toggle="tooltip" data-placement="right"></span>
+                  <span class="list-group-item-value">Custom Dialogs</span>
+                  <span class="badge">2</span>
+              </a>
+          </li>
+      </ul>
+  </nav>
+  <div class="container-fluid container-cards-pf container-pf-alt-nav-pf-vertical-alt">
+      <div ng-view></div>
+  </div>
 
-            <!-- build:js js/libraries.js -->
-            <script src="libraries/jquery/dist/jquery.min.js"></script>
-            <script src="libraries/lodash/dist/lodash.min.js"></script>
-            <script src="libraries/angular/angular.min.js"></script>
-            <script src="libraries/angular-route/angular-route.min.js"></script>
-            <script src="libraries/angular-resource/angular-resource.min.js"></script>
-            <script src="libraries/angular-sanitize/angular-sanitize.min.js"></script>
-            <script src="libraries/patternfly/dist/js/patternfly.min.js"></script>
-            <script src="libraries/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-            <script src="libraries/angular-translate/angular-translate.min.js"></script>
-            <script src="libraries/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-            <!-- endbuild -->
-            <!-- build:js js/app.js -->
-            <script src="modules/app/app-module.js"></script>
-            <script src="modules/app/controllers/app-controller.js"></script>
-            <script src="modules/app/directives/left-hand-navigation-directive.js"></script>
-            <script src="modules/tiles/tiles-module.js"></script>
-            <script src="modules/tiles/controllers/tiles-controller.js"></script>
-            <!-- endbuild -->
-          </body>
-        </html>
+    <!-- build:js js/libraries.js -->
+    <script src="libraries/jquery/dist/jquery.min.js"></script>
+    <script src="libraries/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libraries/lodash/dist/lodash.min.js"></script>
+    <script src="libraries/angular/angular.min.js"></script>
+    <script src="libraries/angular-route/angular-route.min.js"></script>
+    <script src="libraries/angular-resource/angular-resource.min.js"></script>
+    <script src="libraries/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="libraries/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="libraries/angular-translate/angular-translate.min.js"></script>
+    <script src="libraries/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="libraries/patternfly/dist/js/patternfly.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/app.js -->
+    <script src="modules/app/app-module.js"></script>
+    <script src="modules/app/controllers/app-controller.js"></script>
+    <script src="modules/app/directives/left-hand-navigation-directive.js"></script>
+    <script src="modules/tiles/tiles-module.js"></script>
+    <script src="modules/tiles/controllers/tiles-controller.js"></script>
+    <!-- endbuild -->
+  <script>
+      $(function() {
+          // initialize tooltips
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+  </script>
+  </body>
+</html>

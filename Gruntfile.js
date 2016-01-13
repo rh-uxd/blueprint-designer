@@ -1,3 +1,4 @@
+var lrSnippet = require('connect-livereload')();
 module.exports = function( grunt ) {
     'use strict';
 
@@ -43,7 +44,11 @@ module.exports = function( grunt ) {
                 tasks: ['less']
             },
             html:       {
-                files:   ['<%= projectSettings.src %>/**/*.html']
+                files:   ['<%= projectSettings.src %>/**/*.html'],
+                tasks: ['build'],
+                options: {
+                    livereload: 37800
+                }
             },
             json:       {
                 files:   ['<%= projectSettings.mockData %>/**/*.json',
@@ -64,6 +69,8 @@ module.exports = function( grunt ) {
                 options:    {
                     port:       port,
                     hostname: '*',
+                    livereload: 37800,
+                    open:true,
                     base:       [
                         '.tmp',
                         '<%= projectSettings.src %>',
@@ -75,7 +82,7 @@ module.exports = function( grunt ) {
                         }
 
                         // Setup the proxy
-                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+                        var middlewares = [lrSnippet, require('grunt-connect-proxy/lib/utils').proxyRequest];
 
                         // Serve static files
                         options.base.forEach(function (base) {
@@ -85,7 +92,6 @@ module.exports = function( grunt ) {
                         // Make directory browse-able
                         var directory = options.directory || options.base[options.base.length - 1];
                         middlewares.push(connect.directory(directory));
-
                         return middlewares;
                     }
                 }

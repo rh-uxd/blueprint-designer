@@ -24,6 +24,7 @@
     "angular-resource": "~1.3.0",
     "angular-route": "~1.3.0",
     "angular-sanitize": "~1.3.0",
+    "bootstrap": "~3.3.5",
     "patternfly": "git://github.com/erundle/patternfly.git#master",
     "angular-patternfly": "git://github.com/erundle/angular-patternfly.git#master",
     "angular-bootstrap": "0.13.0",
